@@ -12,3 +12,4 @@ build solution as win32
 
 put thing in C:\Program Files (x86)\VSTPlugins
 
+note you shoulld PROBABLY fix the sdk yourself it errors when compiling
