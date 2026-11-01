@@ -1,0 +1,14 @@
+public.sdk/
+pluginterfaces/
+vstsdk/
+artwork/
+bin/
+doc/
+.vs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+*.user
+*.aps
+*.suo
