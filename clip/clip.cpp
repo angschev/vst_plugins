@@ -7,11 +7,15 @@ const char* labels[3] = {
 	"MIX", "THRESHOLD", "CLOGGING"
 };
 
-#define min(x,m) ((x)>(m))?(m):(x)
-#define max(x,m) ((x)<(m))?(m):(x)
+const char units[3] = {
+	'%', 'A', '%'
+};
+
+#define min(x,m) (((x)>(m))?(m):(x))
+#define max(x,m) (((x)<(m))?(m):(x))
 #define clamp(x,a,b) min(max(x,b),a) // min and max already parenthesizes so no need
-#define sign(x) ((x) < 0.f)?-1.f:1.f
-#define abs(x) (x)<0.f?(-x):(x)
+#define sign(x) (((x) < 0.f)?-1.f:1.f)
+#define abs(x) ((x)<0.f?-(x):(x))
 
 #define eps 0.00000000001f
 
@@ -89,7 +93,7 @@ float Clipz::getParameter(VstInt32 idx) {
 	}
 	return o;
 }
-void Clipz::getParameterLabel(VstInt32 index, char* label) { vst_strncpy(label, labels[index], 10); }
+void Clipz::getParameterLabel(VstInt32 index, char* label) { vst_strncpy(label, (char*)&units[index], 1); }
 void Clipz::getParameterDisplay(VstInt32 index, char* text) { 
 	switch (index) {
 	case 0: float2string(mix, text, 3); break;
@@ -97,7 +101,7 @@ void Clipz::getParameterDisplay(VstInt32 index, char* text) {
 	case 2: float2string(clg, text, 3); break;
 	}
 }
-void Clipz::getParameterName(VstInt32 index, char* text)    { vst_strncpy(text, labels[index], 10); }
+void Clipz::getParameterName(VstInt32 index, char* text) { vst_strncpy(text, labels[index], 10); };
 
 VstPlugCategory Clipz::getPlugCategory() { return kPlugCategEffect; }
 bool Clipz::getVendorString(char* text) {
