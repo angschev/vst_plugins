@@ -4,7 +4,7 @@
 #include <windows.h>
 
 const char* labels[3] = {
-	"MIX", "THRESHOLD", "CLOGGING"
+	"MIX", "THRESH", "CLOG"
 };
 
 const char units[3] = {
@@ -17,7 +17,7 @@ const char units[3] = {
 #define sign(x) (((x) < 0.f)?-1.f:1.f)
 #define abs(x) ((x)<0.f?-(x):(x))
 
-#define eps 0.00000000001f
+#define eps 0.000001f
 
 AudioEffect* createEffectInstance(audioMasterCallback audioMaster) {
 #ifdef EXTDEB
@@ -101,7 +101,7 @@ void Clipz::getParameterDisplay(VstInt32 index, char* text) {
 	case 2: float2string(clg, text, 3); break;
 	}
 }
-void Clipz::getParameterName(VstInt32 index, char* text) { vst_strncpy(text, labels[index], 10); };
+void Clipz::getParameterName(VstInt32 index, char* text) { vst_strncpy(text, labels[index], 7); };
 
 VstPlugCategory Clipz::getPlugCategory() { return kPlugCategEffect; }
 bool Clipz::getVendorString(char* text) {
