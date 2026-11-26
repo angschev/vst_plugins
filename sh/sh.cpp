@@ -3,7 +3,7 @@
 #define min(x,m) (((x)>(m))?(m):(x))
 
 const char* labels[4] = {
-	"MIX", "UPDATE RATE", "INTERPOLATE", "NOISE"
+	"MIX", "UPDRATE", "INTERP", "NOISE"
 };
 
 AudioEffect* createEffectInstance(audioMasterCallback audioMaster)
@@ -83,7 +83,7 @@ float Bity::getParameter(VstInt32 index)
 
 void Bity::getParameterName(VstInt32 index, char* label)
 {
-	vst_strncpy(label, labels[index], 12);
+	vst_strncpy(label, labels[index], kVstMaxParamStrLen);
 }
 
 void Bity::getParameterDisplay(VstInt32 index, char* text)
@@ -106,7 +106,7 @@ void Bity::getParameterDisplay(VstInt32 index, char* text)
 
 void Bity::getParameterLabel(VstInt32 index, char* label)
 {
-	vst_strncpy(label, labels[index], 12);
+	vst_strncpy(label, labels[index], kVstMaxParamStrLen);
 }
 
 bool Bity::getEffectName(char* name)
