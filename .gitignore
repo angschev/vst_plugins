@@ -12,3 +12,4 @@ x86/
 *.user
 *.aps
 *.suo
+.vs/
